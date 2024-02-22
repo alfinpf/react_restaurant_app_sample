@@ -1,22 +1,32 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Container, Row, Col,Card, Button } from 'react-bootstrap'
+import Restaurants from './Restaurants'
 
 function Home() {
-    return (
 
+    const [menu, setMenu]= useState(7);
+
+    const restaurant =  {
+        name:"The New Hotel",
+        place:"Wayanad",
+        photo:"./images/1.jpg",
+        about:"The Best Hotel of the city."
+    }
+
+    const menuAdd = ()=>{
+        setMenu(menu + 1);
+    }
+
+    const menuSubtract = ()=>{
+        setMenu(menu - 1);
+    }    
+
+    return (
+ 
         <Container> 
             <Row>
                 <Col className='py-3' md={6} lg={4} xxl={3}>
-                    <Card>
-                        <Card.Img variant="top" src="./images/1.jpg"/>
-                        <Card.Body>
-                            <Card.Title>Central</Card.Title>
-                            <Card.Text>
-                            Lima
-                            </Card.Text>
-                            <Button variant="dark ">Know More  </Button>
-                        </Card.Body>
-                    </Card>
+                    <Restaurants details = {restaurant} id={2} />
                 </Col>
                 <Col className='py-3' md={6} lg={4} xxl={3}>
                     <Card>
@@ -27,6 +37,10 @@ function Home() {
                             Barcelona
                             </Card.Text>
                             <Button variant="dark ">Know More  </Button>
+                            <Button className='ms-3' variant="dark " onClick={menuAdd}>+  </Button> {menu}
+                            <Button className='ms-3' variant="dark " onClick={menuSubtract}>-  </Button>
+                            
+
                         </Card.Body>
                     </Card>
                 </Col>
