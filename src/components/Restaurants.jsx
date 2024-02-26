@@ -2,25 +2,20 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
-function Restaurants({details, id}) {
-
-  console.log(details);
-  console.log(id)
+function Restaurants({restaurant}) {
 
   return (
 
     <Card>
-      <Card.Img variant="top" src={details.photo} />
+      <Card.Img variant="top" src={restaurant.photograph} />
       <Card.Body>
-        <Card.Title>{details.name}</Card.Title>
-        <Card.Text>
-          {details.about}
-        </Card.Text>
-        <Button as={Link} to={`/details/${id}`} variant="dark ">Know More</Button>
+        <Card.Title>{restaurant.name}</Card.Title>
+        <Card.Text>{restaurant.address}</Card.Text>
+        <Button as={Link} to={`/details/${restaurant.id}`} variant="dark ">Know More</Button>
       </Card.Body>
     </Card>
 
   );
 }
 
-export default Restaurants;
+export default Restaurants
