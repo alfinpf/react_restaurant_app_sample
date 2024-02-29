@@ -18,7 +18,7 @@ function RestaurantDetails() {
 
 
     }, []);
-
+    // eslint-disable-next-line
     const restaurant = restaurants.find((rest) => rest.id == id);
 
 
