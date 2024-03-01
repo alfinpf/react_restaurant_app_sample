@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import Restaurants from './Restaurants';
+import { getRestaurants } from '../redux/restaurantSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 function Home() {
 
-    const [restaurants, setRestaurants] = useState([]);
+    const dispatch = useDispatch();
+
+    const restaurants = useSelector((state) => state.restaurants.data);
 
     useEffect(() => {
 
         fetch(`./restaurants.json`)
             .then((res) => res.json())
-            .then((data) => setRestaurants(data.restaurants));
+            .then((data) => dispatch(getRestaurants(data.restaurants)));
     }, []);
 
     return (
