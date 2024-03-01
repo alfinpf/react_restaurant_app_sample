@@ -10,7 +10,7 @@ function Home() {
 
     const dispatch = useDispatch();
 
-    const restaurants = useSelector((state) => state.restaurants.data);
+    const restaurants = useSelector((state) => state.restaurants.data); 
 
     useEffect(() => {
 

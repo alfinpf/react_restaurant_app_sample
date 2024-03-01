@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
 
 
 function RestaurantDetails() {
 
+    const restaurants = useSelector((state) => state.restaurants.data); 
 
-    const [restaurants, setRestaurants] = useState([]);
     const { id } = useParams();
 
-
-    useEffect(() => {
-
-        fetch(`${process.env.PUBLIC_URL}/restaurants.json`)
-            .then((res) => res.json())
-            .then((data) => setRestaurants(data.restaurants)).catch((e) => console.log(e))
-
-
-    }, []);
     // eslint-disable-next-line
     const restaurant = restaurants.find((rest) => rest.id == id);
 
